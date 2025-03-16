@@ -138,36 +138,66 @@
   </div>
 </template>
 
-<!--<script>-->
-<!--import {execute} from "@/api/index.js";-->
+<script>
+import { execute } from "@/api/index.js";
 
-<!--export default {-->
-<!--  name:"LoginPage",-->
-<!--  data(){-->
-<!--    return{-->
-<!--      email:'',-->
-<!--      password:''-->
-<!--    };-->
+export default {
+  name: "LoginPage",
+  data() {
+    return {
+      email: '',
+      password: '',
+      errorMessage: '',
+      isLoading: false
+    };
+  },
+  methods: {
+    login() {
+      // Reset error message
+      this.errorMessage = '';
 
-<!--  },-->
-<!--  mounted() {-->
+      // Validate inputs
+      if (!this.email || !this.password) {
+        this.errorMessage = 'Email and password are required';
+        return;
+      }
 
-<!--  },-->
-<!--  methods:{-->
-<!--    login(){-->
-<!--      const  data = new FormData();-->
-<!--      data.append ("function","LoginUser")-->
-<!--      data.append ("email",this.email)-->
-<!--      data.append ("password",this.password)-->
+      // Set loading state
+      this.isLoading = true;
 
-<!--      execute(data).then((res)=>{-->
-<!--        alert(res.data)-->
-<!--      })-->
+      // Create params object for consistency with registration
+      const params = {
+        function: "LoginUser",
+        email: this.email,
+        password: this.password
+      };
 
-<!--    }-->
-<!--  }-->
+      execute(params)
+          .then((response) => {
+            console.log("Login response:", response.data);
 
+            if (response.data.success) {
+              // Handle successful login
+              alert("Login successful!");
 
-<!--}-->
-<!--</script>-->
+              // Store user data if needed
+              localStorage.setItem('user', JSON.stringify(response.data.user));
 
+              // Redirect to dashboard or home page
+              this.$router.push('/dashboard');
+            } else {
+              // Handle failed login
+              this.errorMessage = response.data.message || 'Login failed';
+            }
+          })
+          .catch((error) => {
+            console.error("Login error:", error);
+            this.errorMessage = 'An error occurred during login';
+          })
+          .finally(() => {
+            this.isLoading = false;
+          });
+    }
+  }
+}
+</script>
