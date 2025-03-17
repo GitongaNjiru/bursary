@@ -109,7 +109,8 @@
                   </form>
 
                   <div class="mt-5 text-center">
-                    <p>Already have an account? <a href="auth-login-2.html" class="fw-medium text-primary">Login</a></p>
+                    <p>Already have an account?<router-link to="/login" class="fw-medium text-primary">Login</router-link> </p>
+
                   </div>
                 </div>
               </div>

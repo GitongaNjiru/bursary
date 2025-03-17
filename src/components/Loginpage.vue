@@ -73,9 +73,7 @@
                   <div class="my-auto">
 
                     <div>
-                      <h5 class="text-success">Welcome Back {{names}}! </h5>
-                      <p class="text-muted">Sign in to continue Using the <strong>NG CDF For Mwea Connstituency</strong>
-                      </p>
+                      <p class="text-muted">Sign in to continue</p>
                     </div>
 
                     <div class="mt-4">
@@ -145,27 +143,22 @@ export default {
   name: "LoginPage",
   data() {
     return {
-      email: '',
-      password: '',
-      errorMessage: '',
+      email: "",
+      password: "",
+      errorMessage: "",
       isLoading: false
     };
   },
   methods: {
     login() {
-      // Reset error message
-      this.errorMessage = '';
-
-      // Validate inputs
+      this.errorMessage = "";
       if (!this.email || !this.password) {
-        this.errorMessage = 'Email and password are required';
+        this.errorMessage = "Email and password are required";
         return;
       }
 
-      // Set loading state
       this.isLoading = true;
 
-      // Create params object for consistency with registration
       const params = {
         function: "LoginUser",
         email: this.email,
@@ -174,30 +167,33 @@ export default {
 
       execute(params)
           .then((response) => {
-            console.log("Login response:", response.data);
+            console.log("Login response:", response.data); // ✅ Check full API response
+            console.log("User data:", response.data.user); // ✅ Check user object
 
             if (response.data.success) {
-              // Handle successful login
               alert("Login successful!");
 
-              // Store user data if needed
-              localStorage.setItem('user', JSON.stringify(response.data.user));
+              // ✅ Check if user data exists
+              const user = response.data.user;
+              if (user) {
+                localStorage.setItem("user", JSON.stringify(user));
+              } else {
+                console.error("User object is missing in response!");
+              }
 
-              // Redirect to dashboard or home page
-              this.$router.push('/dashboard');
+              this.$router.push("/dashboard");
             } else {
-              // Handle failed login
-              this.errorMessage = response.data.message || 'Login failed';
+              this.errorMessage = response.data.message || "Login failed";
             }
           })
           .catch((error) => {
             console.error("Login error:", error);
-            this.errorMessage = 'An error occurred during login';
+            this.errorMessage = "An error occurred during login";
           })
           .finally(() => {
             this.isLoading = false;
           });
     }
   }
-}
+};
 </script>
