@@ -43,10 +43,10 @@
                     <div class="row justify-content-center">
                       <div class="col-lg-7">
                         <div class="text-center">
-                          <img src="/assets/images/logo-text-white.png" alt="Nouveta Logo" class="img mb-1" style="width: 260px;">
+<!--                          <img src="/assets/images/logo-text-white.png" alt="Nouveta Logo" class="img mb-1" style="width: 260px;">-->
 
-                          <h2 class="text-white fw-bold">NG CDF</h2>
-                          <p class="font-size-16 mb-0 text-white text-capitalize">Usawa kwa wote</p>
+<!--                          <h2 class="text-white fw-bold"></h2>-->
+                          <p class="font-size-16 mb-0 text-white text-capitalize">Your Journey to Success Starts Here.</p>
                           <strong>-</strong>
 
                         </div>
@@ -65,10 +65,10 @@
 
                 <div class="d-flex flex-column h-100">
                   <div class="mb-4 mb-md-5">
-                    <a href="index.html" class="d-block auth-logo d-flex justify-content-center">
-                      <img src="/assets/images/color-logo.png" alt="" height="18" class="auth-logo-dark">
-                      <img src="/assets/images/logo-light.png" alt="" height="18" class="auth-logo-light">
-                    </a>
+<!--                    <a href="index.html" class="d-block auth-logo d-flex justify-content-center">-->
+<!--                      <img src="/assets/images/color-logo.png" alt="" height="18" class="auth-logo-dark">-->
+<!--                      <img src="/assets/images/logo-light.png" alt="" height="18" class="auth-logo-light">-->
+<!--                    </a>-->
                   </div>
                   <div class="my-auto">
 
@@ -111,6 +111,10 @@
                   </div>
 
                   <div class="mt-4 mt-md-5 text-center">
+                    <p>Don't have an account?
+                      <router-link to="/" class="fw-medium text-primary">Sign Up</router-link>
+                    </p>
+
 
 
                   </div>

@@ -55,7 +55,7 @@
               <a> <span class="logo-lg"></span>
               <div class="portal-title">
 <!--                <h5 class="text-success">Welcome Back, {{ names }}!</h5>-->
-                <h6 class="text-muted mb-0 text-white opacity-75">County</h6>
+                <h6 class="text-muted mb-0 text-white opacity-75">Bursary</h6>
               </div>
             </a>
           </div>
@@ -224,17 +224,17 @@
           <ul class="metismenu list-unstyled text-capitalize" id="side-menu">
 
             <li>
-              <a href="index.html" class="waves-effect">
+              <a href="#" @click.prevent="$router.push('/dashboard')" class="waves-effect">
                 <i class="bx bx-home-circle"></i><span>Dashboard</span>
               </a>
             </li>
             <li>
               <a href="javascript: void(0);" class="waves-effect has-arrow">
                 <i class="mdi mdi-file-document-edit-outline"></i>
-                <span>Bursery Applications</span>
+                <span>Bursary Applications</span>
               </a>
               <ul class="sub-menu" aria-expanded="false">
-                <li><a href="application-new.html">Initiate Application</a></li>
+                <li><router-link to="/application">Initiate Application</router-link></li>
                 <li><a href="application-validation.html">Application Validation</a></li>
                 <li><a href="application-approval.html">Awaiting Approval</a></li>
               </ul>
